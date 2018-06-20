@@ -27,10 +27,23 @@ public class BookDaoImpl implements BookDao{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Book get(Long id) {
 		Book book = entityManager.find(Book.class, id);
-		entityManager.close();
 		return book;
+	}
+
+	@Override
+	@Transactional
+	public void remove(Long id) {
+		Book book = entityManager.find(Book.class, id);
+		entityManager.remove(book);
+	}
+
+	@Override
+	@Transactional
+	public void update(Book book) {
+		entityManager.merge(book);
 	}
 
 }

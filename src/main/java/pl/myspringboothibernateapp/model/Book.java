@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 public class Book {
 	
@@ -13,6 +15,7 @@ public class Book {
 	@GeneratedValue	
 	private Long id;
 	private String isbn;
+	@Transient
 	private String title;
 	private String author;
 	
