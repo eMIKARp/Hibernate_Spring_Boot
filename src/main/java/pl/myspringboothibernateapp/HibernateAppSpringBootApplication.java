@@ -13,8 +13,9 @@ public class HibernateAppSpringBootApplication {
 	public static void main(String[] args) throws InterruptedException {
 		ConfigurableApplicationContext ctx = SpringApplication.run(HibernateAppSpringBootApplication.class, args);
         BookDao dao = ctx.getBean(BookDao.class);
-        Book book = new Book("1234567890468", "Spring is so cool", "Javastart");
+        Book book = new Book("10468", "Emil", "Javastart");
         dao.save(book);
-        Thread.sleep(5000);
+        System.out.println(dao.get(1L));
+        
 	}
 }
